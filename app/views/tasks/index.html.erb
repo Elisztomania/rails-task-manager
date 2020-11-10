@@ -1,0 +1,14 @@
+<h1>My tasks</h1>
+<ul>
+  <% @tasks.each do |task| %>
+  <li>
+    <%= simple_form_for(task) do |f| %>
+      <%= f.input_field :completed, as: :boolean %>
+    <% end %>
+    <%= link_to task.title, task_path(task) %>
+    <%= link_to '🗑', task_path(task), method: :delete, data: {confirm: 'Are u sure bro?'}  %>
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Create a task', new_task_path %>
